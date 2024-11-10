@@ -6,12 +6,12 @@ import { MdOutlineSync } from "react-icons/md";
 
 interface AvatarTransitionProps {
   avatarUrl: string;
-  dogUrl: string;
+  emojiUrl: string;
 }
 
 const AvatarTransition: React.FC<AvatarTransitionProps> = ({
   avatarUrl,
-  dogUrl,
+  emojiUrl,
 }: AvatarTransitionProps) => {
   const [toggle, setToggle] = useState(false);
 
@@ -39,24 +39,24 @@ const AvatarTransition: React.FC<AvatarTransitionProps> = ({
 
   return (
     <div className="flex justify-between">
-      <div className="relative w-24 h-24 md:w-28 md:h-28">
+      <div className="relative w-24 md:w-28 h-24 md:h-28">
         <motion.div
           key={toggle ? "blue" : "green"}
           animate="animate"
-          className="absolute inset-0 m-auto rounded-full bg-blue-300 opacity-60 blur-md"
+          className="absolute inset-0 bg-blue-300 opacity-60 blur-md m-auto rounded-full"
           initial="initial"
           variants={pingVariants}
         />
         <motion.div
           animate={toggle ? "exit" : "enter"}
-          className="absolute inset-0 rounded-full flex items-center justify-center"
+          className="absolute inset-0 flex justify-center items-center rounded-full"
           initial="exit"
           transition={spring}
           variants={avatarVariants}
         >
           <Image
             alt="Avatar"
-            className="w-24 h-24 md:w-28 md:h-28 object-cover mb-4 border-2 border-transparent dark:border-knight rounded-full"
+            className="border-2 dark:border-knight mb-4 border-transparent rounded-full w-24 md:w-28 h-24 md:h-28 object-cover"
             height={128}
             src={avatarUrl}
             width={128}
@@ -64,22 +64,22 @@ const AvatarTransition: React.FC<AvatarTransitionProps> = ({
         </motion.div>
         <motion.div
           animate={toggle ? "enter" : "exit"}
-          className="absolute inset-0 rounded-full flex items-center justify-center"
+          className="absolute inset-0 flex justify-center items-center rounded-full"
           initial="exit"
           transition={spring}
           variants={avatarVariants}
         >
           <Image
-            alt="Dog Avatar"
-            className="w-24 h-24 md:w-28 md:h-28 object-cover mb-4 border-2 border-transparent dark:border-knight rounded-full"
+            alt="Emoji Avatar"
+            className="border-2 dark:border-knight mb-4 border-transparent rounded-full w-24 md:w-28 h-24 md:h-28 object-cover"
             height={128}
-            src={dogUrl}
+            src={emojiUrl}
             width={128}
           />
         </motion.div>
       </div>
       <Button
-        className="rounded-full border-midnight dark:border-knight"
+        className="border-midnight dark:border-knight rounded-full"
         startContent={<MdOutlineSync size={16} />}
         variant="bordered"
         onPress={() => setToggle((prev) => !prev)}

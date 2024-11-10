@@ -1,12 +1,12 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Chengxiang Wu - Full Stack Developer & Data Scientist",
-  description: "Personal website of Chengxiang (Eric) Wu",
+  name: "Dean Abner Julian - Full Stack Developer",
+  description: "Personal website of Dean Abner (Julian) Gerung",
   links: {
-    github: "https://github.com/itsEricWu",
-    linkedin: "https://www.linkedin.com/in/chengxiang-wu/",
-    email: "mailto:cxwu00@gmail.com",
+    github: "https://github.com/julians22",
+    linkedin: "https://www.linkedin.com/in/deanabner/",
+    email: "mailto:dabnerjulian@gmail.com",
   },
 };
 

@@ -6,49 +6,33 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import Paper from "./paper";
-import { AnimationSwitch } from "./animation-swith";
-import MiniPic from "./mini-pic";
 
 import { cn } from "@/lib/utils";
 import AvatarTransition from "@/components/avatar";
 import { DockDemo } from "@/components/dock-demo";
 import { ThemeSwitch } from "@/components/theme-switch";
-import CardStack from "@/components/card-stack";
-import AnimatedEmoji from "@/components/animated-emoji";
 import IconCloud from "@/components/icon-cloud";
 import MapComponent from "@/components/map";
-import WebAgent from "@/components/webagent";
-import Chatbot from "@/components/chatbot";
-import { MiniModel } from "@/components/mini";
-import Actions from "@/components/actions";
 import { layouts, selectedCard } from "@/config/layout";
 import { icons } from "@/config/icons";
 import useWindowWidth from "@/hooks/useWindowWidth";
+import ProjectSlider from "./projects-slider";
 
 interface HomeProps {
-  photos: string[];
   avatarUrl: string;
-  dogUrl: string;
-  actionImageUrl: string;
+  emojiUrl: string;
   resumeUrl: string;
-  webagentUrl: string;
-  chatbotUrl: string;
   paperUrl: string;
 }
 
 const Home = ({
-  photos,
   avatarUrl,
-  dogUrl,
-  actionImageUrl,
+  emojiUrl,
   resumeUrl,
-  webagentUrl,
-  chatbotUrl,
   paperUrl,
 }: HomeProps) => {
   const width = useWindowWidth();
   const [tabSelected, setTabSelected] = useState("all");
-  const [animated, setAnimated] = useState(false);
   const router = useRouter();
 
   if (!width) {
@@ -56,7 +40,7 @@ const Home = ({
   }
 
   return (
-    <div className="flex justify-center flex-col items-center">
+    <div className="flex flex-col justify-center items-center">
       <Tabs
         aria-label="Tabs"
         className="mb-2 md:mb-6 rounded-full"
@@ -84,12 +68,12 @@ const Home = ({
         <Tab key="all" title="All" />
         <Tab key="about" title="About" />
         <Tab key="projects" title="Projects" />
-        <Tab key="blog" title="Blog" />
+        {/* <Tab key="blog" title="Blog" /> */}
       </Tabs>
 
       <Responsive
         breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
-        className="layout w-full h-full"
+        className="w-full h-full layout"
         cols={{ lg: 4, md: 4, sm: 2, xs: 2, xxs: 2 }}
         isDraggable={width > 480}
         isResizable={false}
@@ -104,48 +88,16 @@ const Home = ({
             selectedCard[tabSelected]["avatar"] ? "opacity-100" : "opacity-50",
           )}
         >
-          <AvatarTransition avatarUrl={avatarUrl} dogUrl={dogUrl} />
+          <AvatarTransition avatarUrl={avatarUrl} emojiUrl={emojiUrl} />
           <p className="text-sm md:text-medium">
-            Hey! I’m <span className="font-oleo text-2xl"> Eric</span>, a
-            software engineer with a knack for AI, hailing from UCLA and Purdue.
-            Currently, I’m building a cool marketing AI agent. My world revolves
-            around web development, deep learning, and data science. And yes, I
-            have an adorable dog named Bert!
+            Hey! I’m <span className="font-oleo text-2xl"> Julian</span>, I
+            boast a rich five-year tenure in the realm of programming. Fluent in
+            languages such as JavaScript and PHP, I bring a dynamic skill set to
+            the table. I hold a Bachelor&apos;s Degree in System Information
+            from Nusa Mandiri University in Jakarta, Indonesia, a testament to
+            commitment to academic excellence.
           </p>
           <DockDemo resumeUrl={resumeUrl} />
-        </div>
-        <div
-          key="themeSwitch"
-          className={cn(
-            "bg-white dark:bg-darkBg border-2 border-transparent dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center z-[1]",
-            selectedCard[tabSelected]["themeSwitch"]
-              ? "opacity-100"
-              : "opacity-50",
-          )}
-        >
-          <ThemeSwitch />
-        </div>
-        <div
-          key="cardStack"
-          className={cn(
-            "bg-white dark:bg-darkBg border-2 border-transparent dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center z-[2]",
-            selectedCard[tabSelected]["cardStack"]
-              ? "opacity-100"
-              : "opacity-50",
-          )}
-        >
-          <CardStack photos={photos} />
-        </div>
-        <div
-          key="animatedEmoji"
-          className={cn(
-            "bg-white dark:bg-darkBg border-2 border-transparent dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center z-[1]",
-            selectedCard[tabSelected]["animatedEmoji"]
-              ? "opacity-100"
-              : "opacity-50",
-          )}
-        >
-          <AnimatedEmoji />
         </div>
         <div
           key="mapComponent"
@@ -159,6 +111,17 @@ const Home = ({
           <MapComponent />
         </div>
         <div
+          key="themeSwitch"
+          className={cn(
+            "bg-white dark:bg-darkBg border-2 border-transparent dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center z-[1]",
+            selectedCard[tabSelected]["themeSwitch"]
+              ? "opacity-100"
+              : "opacity-50",
+          )}
+        >
+          <ThemeSwitch />
+        </div>
+        <div
           key="iconCloud"
           className={cn(
             "bg-white dark:bg-darkBg border-2 border-transparent dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center relative overflow-hidden p-10 md:p-8 z-[1]",
@@ -170,49 +133,16 @@ const Home = ({
           <IconCloud iconSlugs={icons} />
         </div>
         <div
-          key="webAgent"
+          key="project-slider"
           className={cn(
-            "bg-white dark:bg-darkBg dark:border-2 dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center overflow-hidden z-[1]",
-            selectedCard[tabSelected]["webAgent"]
+            "bg-cardYellow dark:bg-darkBg dark:border-2 dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center z-[1] overflow-hidden",
+            selectedCard[tabSelected]["project-slider"]
               ? "opacity-100"
               : "opacity-50",
           )}
         >
-          <WebAgent webAgentUrl={webagentUrl} />
-        </div>
-        <div
-          key="chatBot"
-          className={cn(
-            "bg-white dark:bg-darkBg dark:border-2 dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center overflow-hidden z-[1]",
-            selectedCard[tabSelected]["chatBot"] ? "opacity-100" : "opacity-50",
-          )}
-        >
-          <Chatbot chatbotUrl={chatbotUrl} />
-        </div>
-        <div
-          key="miniModel"
-          className={cn(
-            "bg-white dark:bg-darkBg border-2 border-transparent dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center z-[1] overflow-hidden",
-            selectedCard[tabSelected]["miniModel"]
-              ? "opacity-100"
-              : "opacity-50",
-          )}
-        >
-          {animated ? <MiniModel /> : <MiniPic />}
-          <AnimationSwitch
-            animated={animated}
-            className="absolute top-4 right-4 z-50"
-            setAnimated={setAnimated}
-          />
-        </div>
-        <div
-          key="actions"
-          className={cn(
-            "bg-white dark:bg-darkBg dark:border-2 dark:border-knight cursor-grab active:cursor-grabbing rounded-[2rem] flex justify-center items-center overflow-hidden z-[1]",
-            selectedCard[tabSelected]["actions"] ? "opacity-100" : "opacity-50",
-          )}
-        >
-          <Actions photoUrl={actionImageUrl} />
+            <ProjectSlider />
+
         </div>
         <div
           key="paper"

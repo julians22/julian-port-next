@@ -10,7 +10,7 @@ const MapComponent: React.FC = () => {
 
   const style = useMemo(() => {
     return theme === "dark"
-      ? "mapbox://styles/mapbox/dark-v10"
+      ? "mapbox://styles/mapbox/dark-v11"
       : "mapbox://styles/mapbox/standard";
   }, [theme]);
 
@@ -19,7 +19,7 @@ const MapComponent: React.FC = () => {
       accessToken: process.env.NEXT_PUBLIC_MAPBOX_TOKEN,
       container: mapContainerRef.current as HTMLElement,
       style: style,
-      center: [-118.4438, 34.0699],
+      center: [106.8507, -6.2255],
       zoom: 10,
     });
 
@@ -31,28 +31,25 @@ const MapComponent: React.FC = () => {
   }, [style]);
 
   return (
-    <div className="w-full h-full rounded-3xl overflow-hidden">
+    <div className="rounded-3xl w-full h-full overflow-hidden">
       {!mapLoaded && (
         <Image
           alt="Map"
           className="w-full h-full object-cover"
           height={300}
-          src="/map.jpg"
+          src="/map.PNG"
           width={300}
         />
       )}
       <div ref={mapContainerRef} className="w-full h-full" />
       <div
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-            flex items-center justify-center
-            w-14 h-14 md:w-20 md:h-20 rounded-full 
-            shadow-lg cursor-pointer bg-blue-400 bg-opacity-40 border-2 md:border-4 border-white border-opacity-80 hover:animate-pulse"
+        className="top-1/2 left-1/2 absolute flex justify-center items-center border-2 border-white md:border-4 bg-blue-400 bg-opacity-40 shadow-lg border-opacity-80 rounded-full w-14 md:w-20 h-14 md:h-20 transform -translate-x-1/2 -translate-y-1/2 hover:animate-pulse cursor-pointer"
       >
         <Image
           alt="Icon"
-          className="w-8 h-8 md:w-10 md:h-10"
+          className="rounded-full w-full h-full object-cover"
           height={300}
-          src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Hugging%20Face.png"
+          src="https://pub-efc1edc293984f03ae656bde9e2e3f9a.r2.dev/Memoji.jpg"
           width={300}
         />
       </div>
