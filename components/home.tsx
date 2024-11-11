@@ -17,6 +17,7 @@ import { layouts, selectedCard } from "@/config/layout";
 import { icons } from "@/config/icons";
 import useWindowWidth from "@/hooks/useWindowWidth";
 import ProjectSlider from "./projects-slider";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 interface HomeProps {
   avatarUrl: string;
@@ -57,12 +58,14 @@ const Home = ({
         }}
         radius={"full"}
         onSelectionChange={(selected) => {
+
           if (selected === "blog") {
             router.push("/blog");
 
             return;
           }
           setTabSelected(selected as string);
+          sendGTMEvent({ event: "tabChange", value: selected as string });
         }}
       >
         <Tab key="all" title="All" />

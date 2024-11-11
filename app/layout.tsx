@@ -5,7 +5,7 @@ import "prismjs/themes/prism-tomorrow.css";
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
-import { Analytics } from "@vercel/analytics/react";
+import { GoogleTagManager } from '@next/third-parties/google';
 
 import { Providers } from "./providers";
 
@@ -37,6 +37,7 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="en">
+      {process.env.NODE_ENV === "production" && <GoogleTagManager gtmId="GTM-N6SRBJ9L" />}
       <head />
       <body
         className={clsx(
@@ -46,10 +47,9 @@ export default function RootLayout({
         )}
       >
         <Providers themeProps={{ attribute: "class" }}>
-          <div className="relative flex flex-col bg-[#f6f2f2] dark:bg-[#0b0f11] overflow-y-auto scrollbar-hide min-h-screen">
-            <main className="container mx-auto max-w-7xl pt-10 pb-[25px] md:pt-16 flex flex-col">
+          <div className="relative flex flex-col bg-[#f6f2f2] dark:bg-[#0b0f11] min-h-screen overflow-y-auto scrollbar-hide">
+            <main className="flex flex-col mx-auto pt-10 md:pt-16 pb-[25px] max-w-7xl container">
               {children}
-              <Analytics />
             </main>
           </div>
         </Providers>

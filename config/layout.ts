@@ -27,28 +27,28 @@ export const layouts: Record<string, Layouts> = {
       { i: "project-slider", x: 0, y: 2, w: 4, h: 2 },
     ],
     xs: [
-      { i: "avatar", x: 0, y: 0, w: 4, h: 4 },
+      { i: "avatar", x: 0, y: 0, w: 4, h: 3 },
       { i: "themeSwitch", x: 0, y: 1, w: 1, h: 1 },
-      { i: "iconCloud", x: 0, y: 6, w: 1, h: 1 },
-      { i: "paper", x: 0, y: 7, w: 1, h: 1 },
-      { i: "mapComponent", x: 0, y: 6, w: 2, h: 1 },
+      { i: "mapComponent", x: 1, y: 1, w: 1, h: 1 },
       { i: "project-slider", x: 0, y: 2, w: 4, h: 2 },
+      { i: "iconCloud", x: 0, y: 3, w: 2, h: 2 },
+      { i: "paper", x: 0, y: 7, w: 2, h: 2 },
     ],
     xxs: [
-      { i: "avatar", x: 0, y: 0, w: 4, h: 4 },
+      { i: "avatar", x: 0, y: 0, w: 4, h: 3 },
       { i: "themeSwitch", x: 0, y: 1, w: 1, h: 1 },
-      { i: "iconCloud", x: 0, y: 6, w: 1, h: 1 },
-      { i: "paper", x: 0, y: 7, w: 1, h: 1 },
-      { i: "mapComponent", x: 0, y: 6, w: 2, h: 1 },
+      { i: "mapComponent", x: 1, y: 1, w: 1, h: 1 },
       { i: "project-slider", x: 0, y: 2, w: 4, h: 2 },
+      { i: "iconCloud", x: 0, y: 3, w: 2, h: 2 },
+      { i: "paper", x: 0, y: 7, w: 2, h: 2 },
     ],
   },
 
   about: {
     lg: [
       { i: "avatar", x: 0, y: 0, w: 2, h: 2 },
-      { i: "mapComponent", x: 3, y: 1, w: 1, h: 2 },
-      { i: "iconCloud", x: 1, y: 1, w: 1, h: 2 },
+      { i: "mapComponent", x: 2, y: 0, w: 1, h: 2 },
+      { i: "iconCloud", x: 3, y: 0, w: 1, h: 2 },
       { i: "themeSwitch", x: 0, y: 1, w: 1, h: 2 },
       { i: "paper", x: 1, y: 1, w: 1, h: 2 },
       { i: "project-slider", x: 3, y: 1, w: 2, h: 2 },
@@ -89,12 +89,12 @@ export const layouts: Record<string, Layouts> = {
 
   projects: {
     lg: [
-      { i: "paper", x: 1, y: 1, w: 1, h: 2 },
-      { i: "avatar", x: 0, y: 2, w: 2, h: 2 },
-      { i: "iconCloud", x: 3, y: 3, w: 1, h: 2 },
-      { i: "themeSwitch", x: 1, y: 3, w: 1, h: 2 },
-      { i: "mapComponent", x: 2, y: 3, w: 1, h: 2 },
       { i: "project-slider", x: 0, y: 0, w: 4, h: 2 },
+      { i: "paper", x: 0, y: 1, w: 2, h: 2 },
+      { i: "avatar", x: 2, y: 1, w: 2, h: 2 },
+      { i: "themeSwitch", x: 0, y: 2, w: 1, h: 2 },
+      { i: "mapComponent", x: 1, y: 2, w: 1, h: 2 },
+      { i: "iconCloud", x: 2, y: 2, w: 1, h: 2 },
     ],
     md: [
       { i: "paper", x: 1, y: 1, w: 1, h: 2 },
@@ -153,5 +153,6 @@ export const selectedCard: Record<string, Record<string, boolean>> = {
     mapComponent: false,
     iconCloud: false,
     paper: true,
+    "project-slider": true,
   },
 };
