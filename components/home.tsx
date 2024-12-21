@@ -4,8 +4,10 @@ import { Tab, Tabs } from "@nextui-org/react";
 import { Responsive } from "react-grid-layout";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 import Paper from "./paper";
+import ProjectSlider from "./projects-slider";
 
 import { cn } from "@/lib/utils";
 import AvatarTransition from "@/components/avatar";
@@ -16,8 +18,6 @@ import MapComponent from "@/components/map";
 import { layouts, selectedCard } from "@/config/layout";
 import { icons } from "@/config/icons";
 import useWindowWidth from "@/hooks/useWindowWidth";
-import ProjectSlider from "./projects-slider";
-import { sendGTMEvent } from "@next/third-parties/google";
 
 interface HomeProps {
   avatarUrl: string;
@@ -26,12 +26,7 @@ interface HomeProps {
   paperUrl: string;
 }
 
-const Home = ({
-  avatarUrl,
-  emojiUrl,
-  resumeUrl,
-  paperUrl,
-}: HomeProps) => {
+const Home = ({ avatarUrl, emojiUrl, resumeUrl, paperUrl }: HomeProps) => {
   const width = useWindowWidth();
   const [tabSelected, setTabSelected] = useState("all");
   const router = useRouter();
@@ -58,7 +53,6 @@ const Home = ({
         }}
         radius={"full"}
         onSelectionChange={(selected) => {
-
           if (selected === "blog") {
             router.push("/blog");
 
@@ -144,8 +138,7 @@ const Home = ({
               : "opacity-50",
           )}
         >
-            <ProjectSlider />
-
+          <ProjectSlider />
         </div>
         <div
           key="paper"

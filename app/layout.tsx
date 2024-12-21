@@ -5,7 +5,7 @@ import "prismjs/themes/prism-tomorrow.css";
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import clsx from "clsx";
-import { GoogleTagManager } from '@next/third-parties/google';
+import { GoogleTagManager } from "@next/third-parties/google";
 
 import { Providers } from "./providers";
 
@@ -37,7 +37,9 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="en">
-      {process.env.NODE_ENV === "production" && <GoogleTagManager gtmId="GTM-N6SRBJ9L" />}
+      {process.env.NODE_ENV === "production" && (
+        <GoogleTagManager gtmId="GTM-N6SRBJ9L" />
+      )}
       <head />
       <body
         className={clsx(

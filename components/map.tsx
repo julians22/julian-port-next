@@ -42,9 +42,7 @@ const MapComponent: React.FC = () => {
         />
       )}
       <div ref={mapContainerRef} className="w-full h-full" />
-      <div
-        className="top-1/2 left-1/2 absolute flex justify-center items-center border-2 border-white md:border-4 bg-blue-400 bg-opacity-40 shadow-lg border-opacity-80 rounded-full w-14 md:w-20 h-14 md:h-20 transform -translate-x-1/2 -translate-y-1/2 hover:animate-pulse cursor-pointer"
-      >
+      <div className="top-1/2 left-1/2 absolute flex justify-center items-center border-2 border-white md:border-4 bg-blue-400 bg-opacity-40 shadow-lg border-opacity-80 rounded-full w-14 md:w-20 h-14 md:h-20 transform -translate-x-1/2 -translate-y-1/2 hover:animate-pulse cursor-pointer">
         <Image
           alt="Icon"
           className="rounded-full w-full h-full object-cover"

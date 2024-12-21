@@ -1,8 +1,8 @@
+import Head from "next/head";
 import React from "react";
 
-import { getCategories, getPosts } from "@/lib/wpJson";
 import Header from "@/components/Blogs/Header";
-import Head from "next/head";
+import { getCategories, getPosts } from "@/lib/wpJson";
 interface Category {
   id: number;
   count: number;
@@ -45,9 +45,7 @@ export default async function Page() {
   return (
     <div className="gap-4 grid grid-cols-1 px-2 lg:px-0 w-full">
       <Head>
-          <title>
-              Blog - Dean Abner Julian
-          </title>
+        <title>Blog - Dean Abner Julian</title>
       </Head>
       <Header title="Blog" />
 
