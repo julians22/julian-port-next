@@ -8,8 +8,6 @@ const nextConfig = {
       "www.notion.so",
     ],
   },
-
-  staticPageGenerationTimeout: 1000 * 60 * 60 * 24 * 7, // 7 days
 };
 
 module.exports = nextConfig;
