@@ -33,5 +33,5 @@ module.exports = {
     },
   },
   darkMode: "class",
-  plugins: [nextui(), require("tailwind-scrollbar-hide")],
+  plugins: [nextui(), require("tailwind-scrollbar-hide"), require('@tailwindcss/typography')],
 };

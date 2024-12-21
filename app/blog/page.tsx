@@ -1,54 +1,106 @@
-import Link from "next/link";
-import { Button, Card, CardBody, CardFooter } from "@nextui-org/react";
-import { RxCross2 } from "react-icons/rx";
-import Image from "next/image";
+import React from "react";
 
-import { customMapImageUrl, getAllBlogPosts } from "@/lib/notion";
-import { notionBlogConfig } from "@/config/site";
+import { getCategories, getPosts } from "@/lib/wpJson";
+import Header from "@/components/Blogs/Header";
+import Head from "next/head";
+interface Category {
+  id: number;
+  count: number;
+  description: string;
+  link: string;
+  name: string;
+  slug: string;
+  taxonomy: string;
+}
 
-export const revalidate = 0;
+export default async function Page() {
+  const categories: Category[] = await getCategories(2);
+  const posts: any = await getPosts(2, true);
 
-const Page = async () => {
-  const blogPosts = await getAllBlogPosts(notionBlogConfig.blogParentId);
+  let categoryItems = categories.map((category) => (
+    <li key={category.id}>
+      <a href={category.link}>{category.name}</a>
+    </li>
+  ));
+
+  const limitExcerpt = (excerpt: string) => {
+    return excerpt.length > 100 ? excerpt.substring(0, 100) + "..." : excerpt;
+  };
+
+  const postLabels = (_embedded: any, taxonomy: string = "category") => {
+    const term = _embedded["wp:term"];
+
+    if (!term) return "";
+    let labels = "";
+
+    term.flat().forEach((category: any) => {
+      if (category.taxonomy === taxonomy) {
+        labels += category.name + ", ";
+      }
+    });
+
+    return labels.substring(0, labels.length - 2);
+  };
 
   return (
-    <div className="px-4 pb-10">
-      <div className="flex flex-col items-center mb-4 gap-2">
-        <Link href="/">
-          <Button
-            isIconOnly
-            className="dark:border-knight dark:bg-transparent dark:border-2 bg-[#ece7e7] border-0"
-            radius="full"
-            variant="bordered"
-          >
-            <RxCross2 />
-          </Button>
-        </Link>
-        <h1 className="text-2xl font-[500]">My Blog</h1>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-        {blogPosts.map(({ id, title, block, pageCover, createdAt }) => (
-          <Link key={id} href={`/blog/${id}`}>
-            <Card className="dark:bg-darkBg dark:border-2 dark:border-knight rounded-[2rem]">
-              <CardBody className="p-0">
-                <Image
-                  alt="cover"
-                  className="rounded-b-none object-cover h-[200px]"
-                  height={500}
-                  src={customMapImageUrl(pageCover, block)}
-                  width={500}
+    <div className="gap-4 grid grid-cols-1 px-2 lg:px-0 w-full">
+      <Head>
+          <title>
+              Blog - Dean Abner Julian
+          </title>
+      </Head>
+      <Header title="Blog" />
+
+      <div className="gap-4 grid grid-cols-12">
+        <div className="lg:block hidden col-span-2">
+          <h4 className="mb-3 font-semibold text-2xl">Kategori</h4>
+          <ul className="flex flex-col divide-y-2 divide-gray-300 dark:divide-gray-700">
+            {categoryItems}
+          </ul>
+        </div>
+        <div className="col-span-12 lg:col-span-10">
+          <div className="gap-4 grid grid-cols-1 lg:grid-cols-3">
+            {posts.map((post: any) => (
+              <div
+                key={post.id}
+                className="border-2 border-gray-300 dark:border-gray-700 p-4 rounded-lg"
+              >
+                <h3 className="mb-2 font-semibold text-green-500 text-lg">
+                  {post.title.rendered}
+                </h3>
+                <div className="flex flex-nowrap gap-x-2 mb-2">
+                  <span className="text-gray-500 text-xs">
+                    {new Date(post.date).toLocaleDateString("id-ID", {
+                      dateStyle: "medium",
+                    })}{" "}
+                    |{" "}
+                  </span>
+                  <span className="text-gray-500 text-xs">
+                    {post._embedded.author[0].name}
+                  </span>
+                  {postLabels(post._embedded) ? (
+                    <span className="flex-grow-0 text-gray-500 text-xs">
+                      {" "}
+                      | {postLabels(post._embedded)}
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: limitExcerpt(post.excerpt.rendered),
+                  }}
                 />
-              </CardBody>
-              <CardFooter className="flex justify-between">
-                <h3 className="font-[500] text-lg">{title}</h3>
-                <h3 className="text-sm">{createdAt.toDateString()}</h3>
-              </CardFooter>
-            </Card>
-          </Link>
-        ))}
+
+                <a className="text-blue-500" href={`/blog/${post.slug}`}>
+                  Read more
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
-};
-
-export default Page;
+}
