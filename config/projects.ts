@@ -41,5 +41,5 @@ export const projects = [
     title: "Siapnge.com",
     imageUrl: `${baseAssetsUrl}SiapNge_tn.JPG`,
     url: "https://siapnge.com",
-  }
+  },
 ];

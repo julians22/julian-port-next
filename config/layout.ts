@@ -11,9 +11,9 @@ export const layouts: Record<string, Layouts> = {
       { i: "project-slider", x: 0, y: 2, w: 4, h: 2 },
     ],
     md: [
-      { i: "avatar", x: 0, y: 0, w: 2, h: 3 },
-      { i: "themeSwitch", x: 1, y: 1, w: 1, h: 2 },
-      { i: "mapComponent", x: 2, y: 1, w: 1, h: 2 },
+      { i: "avatar", x: 0, y: 0, w: 3, h: 2 },
+      { i: "mapComponent", x: 3, y: 0, w: 1, h: 1 },
+      { i: "themeSwitch", x: 3, y: 1, w: 1, h: 1 },
       { i: "iconCloud", x: 2, y: 3, w: 1, h: 2 },
       { i: "paper", x: 3, y: 4, w: 1, h: 2 },
       { i: "project-slider", x: 0, y: 2, w: 4, h: 2 },
