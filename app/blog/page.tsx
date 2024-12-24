@@ -1,5 +1,6 @@
 import Head from "next/head";
 import React from "react";
+import Link from "next/link";
 
 import Header from "@/components/Blogs/Header";
 import { getCategories, getPosts } from "@/lib/wpJson";
@@ -91,9 +92,13 @@ export default async function Page() {
                   }}
                 />
 
-                <a className="text-blue-500" href={`/blog/${post.slug}`}>
-                  Read more
-                </a>
+                <Link
+                  prefetch
+                  className="text-blue-500"
+                  href={`/blog/${post.slug}`}
+                >
+                  Baca selengkapnya
+                </Link>
               </div>
             ))}
           </div>
