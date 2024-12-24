@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="id">
       {process.env.NODE_ENV === "production" && (
-        <GoogleTagManager gtmId="2740919928600676" />
+        <GoogleTagManager gtmId="GTM-N6SRBJ9L" />
       )}
       <head />
       <body
