@@ -8,10 +8,10 @@ import clsx from "clsx";
 import { GoogleTagManager } from "@next/third-parties/google";
 
 import { Providers } from "./providers";
+import GoogleAdsense from "./GoogleAdsesnse";
 
 import { siteConfig } from "@/config/site";
 import { fontOleoScript, fontUbuntu } from "@/config/fonts";
-import GoogleAdsense from "./GoogleAdsesnse";
 
 export const metadata: Metadata = {
   title: {

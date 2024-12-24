@@ -8,6 +8,14 @@ const nextConfig = {
       "www.notion.so",
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap-post.xml',
+        destination: '/sitemap-post',
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

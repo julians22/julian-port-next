@@ -10,6 +10,18 @@
   .wp-block-embed iframe{
     @apply mx-auto w-full;
   }
+
+}
+.wp-block-group.code-wrapper{
+  @apply flex flex-col gap-y-0 mb-2 max-w-screen-md w-full overflow-x-auto;
+}
+
+.wp-block-group.code-wrapper .code-header{
+  @apply bg-gray-800 text-white py-4 px-4 m-0 rounded-b-none rounded-t-lg border-b border-gray-900 leading-none;
+}
+
+.wp-block-group.code-wrapper .code-body{
+  @apply bg-gray-900 p-4 m-0 rounded-b-lg rounded-t-none min-w-max overflow-x-auto w-full;
 }
 
 
