@@ -11,6 +11,7 @@ import { Providers } from "./providers";
 
 import { siteConfig } from "@/config/site";
 import { fontOleoScript, fontUbuntu } from "@/config/fonts";
+import GoogleAdsense from "./GoogleAdsesnse";
 
 export const metadata: Metadata = {
   title: {
@@ -38,7 +39,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       {process.env.NODE_ENV === "production" && (
-        <GoogleTagManager gtmId="GTM-N6SRBJ9L" />
+        <GoogleTagManager gtmId="2740919928600676" />
       )}
       <head />
       <body
@@ -48,6 +49,7 @@ export default function RootLayout({
           fontOleoScript.variable,
         )}
       >
+        <GoogleAdsense pId="2740919928600676" />
         <Providers themeProps={{ attribute: "class" }}>
           <div className="relative flex flex-col bg-[#f6f2f2] dark:bg-[#0b0f11] min-h-screen overflow-y-auto scrollbar-hide">
             <main className="flex flex-col mx-auto pt-10 md:pt-16 pb-[25px] max-w-7xl container">
