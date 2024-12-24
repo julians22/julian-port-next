@@ -9,32 +9,27 @@ export default function Header({ title }: { title: string }) {
   return (
     <div>
       <div className="relative">
-        <h1 className="font-semibold text-2xl text-center text-green-500 lg:text-4xl">
+        <h1 className="mt-4 lg:mt-0 font-semibold text-center text-green-500 text-lg md:text-xl lg:text-4xl">
           {title}
         </h1>
 
         {/* Float right back button */}
 
-        <div className="lg:top-0 lg:right-0 bottom-0 fixed lg:absolute inset-x-0 lg:inset-x-auto flex justify-center lg:justify-end space-x-4">
-          <a href="/">
-            <button className="bg-gray-300 hover:bg-gray-400 dark:hover:bg-gray-600 dark:bg-gray-700 mt-2 px-4 py-2 rounded-lg text-black hover:text-white dark:hover:text-black dark:text-white">
-              Beranda
-            </button>
+        <div className="top-0 bottom-auto fixed inset-x-0 flex items-center space-x-4 bg-white mx-auto px-2 md:px-3 lg:px-4 py-2 w-full max-w-7xl container">
+          <a className="font-semibold text-cardGreen" href="/">
+            Beranda
           </a>
 
           {/* Back button to blog post */}
           {/* Show if route is != 'blog' */}
 
           {path !== "/blog" && (
-            <a href="/blog">
-              <button className="bg-gray-300 hover:bg-gray-400 dark:hover:bg-gray-600 dark:bg-gray-700 mt-2 px-4 py-2 rounded-lg text-black hover:text-white dark:hover:text-black dark:text-white">
-                Blog
-              </button>
+            <a className="font-semibold text-cardGreen" href="/blog">
+              Blog
             </a>
           )}
         </div>
       </div>
-      <hr className="border-1 border-gray-300 dark:border-gray-700 my-2 lg:my-4" />
     </div>
   );
 }

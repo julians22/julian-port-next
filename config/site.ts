@@ -9,7 +9,3 @@ export const siteConfig = {
     email: "mailto:dabnerjulian@gmail.com",
   },
 };
-
-export const notionBlogConfig = {
-  blogParentId: "657c8581-4fda-455d-b940-a8fdbf47fd3f",
-};

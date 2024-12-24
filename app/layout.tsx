@@ -37,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning lang="en">
+    <html suppressHydrationWarning lang="id">
       {process.env.NODE_ENV === "production" && (
         <GoogleTagManager gtmId="2740919928600676" />
       )}

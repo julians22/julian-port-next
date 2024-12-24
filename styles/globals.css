@@ -24,6 +24,11 @@
   @apply bg-gray-900 p-4 m-0 rounded-b-lg rounded-t-none min-w-max overflow-x-auto w-full;
 }
 
+/* search first child inside .prose element match figure or .wp-block-image  then reduce margin top */
+.prose .wp-block-image:first-child, .prose figure:first-child{
+  @apply mt-2;
+}
+
 
 .react-grid-item.react-grid-placeholder {
   background: gray;

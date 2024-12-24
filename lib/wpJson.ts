@@ -6,17 +6,25 @@ export async function getCategories(parentId: number) {
   return response.json();
 }
 
-export async function getPosts(categoryId: number, _embed = false) {
-  const url = _embed
-    ? `${baseUrl}/posts?categories=${categoryId}&_embed`
-    : `${baseUrl}/posts?categories=${categoryId}`;
+export async function getPosts(
+  categoryId: number,
+  _embed = false,
+  page = 1,
+  perPage = 9,
+) {
+  let url = _embed
+    ? `${baseUrl}/posts?categories=${categoryId}&_embed&fields=id,slug,title,modified`
+    : `${baseUrl}/posts?categories=${categoryId}&fields=id,slug,title,modified`;
+
+  url += `&page=${page}&per_page=${perPage}`;
+
   const response = await fetch(url);
 
   return response.json();
 }
 
 export async function getPostBySlug(slug: string) {
-  const response = await fetch(`${baseUrl}/posts?slug=${slug}`);
+  const response = await fetch(`${baseUrl}/posts?slug=${slug}&_embed`);
 
   return response.json();
 }
