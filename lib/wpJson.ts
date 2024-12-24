@@ -6,17 +6,12 @@ export async function getCategories(parentId: number) {
   return response.json();
 }
 
-export async function getPosts(
-  categoryId: number,
-  _embed = false,
-  page = 1,
-  perPage = 9,
-) {
+export async function getPosts(categoryId: number, _embed = false, page = 1) {
   let url = _embed
     ? `${baseUrl}/posts?categories=${categoryId}&_embed&fields=id,slug,title,modified`
     : `${baseUrl}/posts?categories=${categoryId}&fields=id,slug,title,modified`;
 
-  url += `&page=${page}&per_page=${perPage}`;
+  url += `&page=${page}`;
 
   const response = await fetch(url);
 
