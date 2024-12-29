@@ -57,6 +57,25 @@ export default function RootLayout({
             </main>
           </div>
         </Providers>
+
+        {process.env.NODE_ENV === "production" && (
+          <>
+            {/* Ads-1 */}
+            <ins
+              className="adsbygoogle"
+              data-ad-client="ca-pub-2740919928600676"
+              data-ad-format="auto"
+              data-ad-slot="1661960282"
+              data-full-width-responsive="true"
+              style={{ display: "block" }}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `(adsbygoogle = window.adsbygoogle || []).push({});`,
+              }}
+            />
+          </>
+        )}
       </body>
     </html>
   );
